@@ -1,9 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
 import './index.css';
 // import App from './App';
 import { Dashboard } from './Dashboard';
-
+import store from './store';
 
 import * as serviceWorker from './serviceWorker';
 
@@ -26,7 +27,11 @@ const dogToAdopt = {
 	story: 'Owner Passed away'
 }
 
-ReactDOM.render(<Dashboard cat={catToAdopt} dog={dogToAdopt} />, document.getElementById('root'));
+ReactDOM.render(
+	<Provider store={store}>
+		<Dashboard cat={catToAdopt} dog={dogToAdopt} />
+	</Provider>,
+	document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
